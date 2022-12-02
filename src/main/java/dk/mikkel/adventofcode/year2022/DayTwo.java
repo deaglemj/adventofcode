@@ -25,12 +25,12 @@ public class DayTwo {
     }
 
     private static Integer calculate(List<String> data, Function<Integer[], Integer> calcFuntion) {
-        return data.stream().map(DayTwo::extractData).map(calcFuntion).reduce(0, (arg0, arg1) -> Integer.sum(arg0, arg1));
+        return data.stream().map(DayTwo::makeRound).map(calcFuntion).reduce(0, (arg0, arg1) -> Integer.sum(arg0, arg1));
     }
 
-    private static Integer[] extractData(String s) {
+    private static Integer[] makeRound(String s) {
         String[] split = s.split(" ");
-        Integer[] game = {split[0].charAt(0) - 64,  split[1].charAt(0) - 87};
+        Integer[] game = { split[0].charAt(0) - 64, split[1].charAt(0) - 87 };
         return game;
     }
 
@@ -45,11 +45,11 @@ public class DayTwo {
     }
 
     private static Integer calcPartTwo(int elf, int player) {
-        if(player == 1){
+        if (player == 1) {
             return elf == 1 ? 3 : elf - 1;
-        }else if(player == 2) {
+        } else if (player == 2) {
             return 3 + elf;
-        }else{
+        } else {
             return 6 + (elf == 3 ? 1 : elf + 1);
         }
     }
