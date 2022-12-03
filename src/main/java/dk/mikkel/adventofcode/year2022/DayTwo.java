@@ -1,5 +1,7 @@
 package dk.mikkel.adventofcode.year2022;
 
+import static java.lang.System.out;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,8 +22,8 @@ public class DayTwo {
         Integer resultPartOne = calculate(data, game -> calcPartOne(game[0], game[1]));
         Integer resultPartTwo = calculate(data, game -> calcPartTwo(game[0], game[1]));
 
-        System.out.println(resultPartOne);
-        System.out.println(resultPartTwo);
+        out.println(resultPartOne);
+        out.println(resultPartTwo);
     }
 
     private static Integer calculate(List<String> data, Function<Integer[], Integer> calcFuntion) {

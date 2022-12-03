@@ -1,5 +1,7 @@
 package dk.mikkel.adventofcode.year2022;
 
+import static java.lang.System.out;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,7 +34,7 @@ public class DayOne {
         }
         Collections.sort(totalCalories, Comparator.reverseOrder());
 
-        System.out.println(totalCalories.get(0));
-        System.out.println(totalCalories.stream().limit(3).reduce(0, (arg0, arg1) -> Integer.sum(arg0, arg1)));
+        out.println(totalCalories.get(0));
+        out.println(totalCalories.stream().limit(3).reduce(0, Integer::sum));
     }
 }
