@@ -17,43 +17,38 @@ public class DayThree {
         // Path path = Paths.get("src/main/resources/year2022/day_three_sample.txt");
 
         List<String> data = Files.readAllLines(path);
-        Integer sumPartOne = data.stream().map(DayThree::getContentPartOne).map(DayThree::findbadgePartOne)
+        Integer sumPartOne = data.stream().map(DayThree::prepareContentPartOne).map(DayThree::findbadge)
                 .map(DayThree::convertCharToIntChar).reduce(0, Integer::sum);
         System.out.println(sumPartOne);
 
         List<List<String>> initial = new ArrayList<>();
         initial.add(new ArrayList<>());
-        Integer sumPartTwo = data.stream().reduce(initial, (subtotal, element) -> {
-            List<String> list = subtotal.get(subtotal.size() - 1);
-            if (list.size() == 3) {
-                list = new ArrayList<>();
-                subtotal.add(list);
-            }
-            list.add(element);
-            return subtotal;
-
-        }, (list1, list2) -> new ArrayList<>()).stream().map(DayThree::findbadgePartTwo)
+        Integer sumPartTwo = data.stream().reduce(initial, DayThree::prepareContentPartTwo, (list1, list2) -> new ArrayList<>()).stream().map(DayThree::findbadge)
                 .map(DayThree::convertCharToIntChar).reduce(0, Integer::sum);
 
         System.out.println(sumPartTwo);
 
     }
 
-    private static Integer findbadgePartOne(String[] c) {
-        char[] charArray = c[0].toCharArray();
-        for (int i = 0; i < charArray.length; i++) {
-            if (c[1].contains(String.valueOf(charArray[i]))) {
-                return (int) charArray[i];
-            }
+    private static List<List<String>> prepareContentPartTwo(List<List<String>> subtotal, String element) {
+        List<String> list = subtotal.get(subtotal.size() - 1);
+        if (list.size() == 3) {
+            list = new ArrayList<>();
+            subtotal.add(list);
         }
-        return 0;
+        list.add(element);
+        return subtotal;
     }
 
-    private static Integer findbadgePartTwo(List<String> c) {
+    private static Integer findbadge(List<String> c) {
         c.sort((arg0, arg1) -> arg0.length() - arg1.length());
         char[] chars = c.get(0).toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            if (c.get(1).contains(String.valueOf(chars[i])) && c.get(2).contains(String.valueOf(chars[i]))) {
+            boolean found = true;
+            for(int j = 1; j < c.size(); j++){
+                found &= c.get(j ).contains(String.valueOf(chars[i]));
+            }
+            if(found){
                 return (int) chars[i];
             }
         }
@@ -61,15 +56,13 @@ public class DayThree {
     }
 
     private static Integer convertCharToIntChar(Integer c) {
-        if (c >= 65 && c <= 90) {
-            return c - 38;
-        } else {
-            return c - 96;
-        }
+        return c >= 65 && c <= 90 ? c - 38 : c -96;
     }
 
-    private static String[] getContentPartOne(String rucksack) {
-        String[] content = { rucksack.substring(0, rucksack.length() / 2), rucksack.substring(rucksack.length() / 2) };
+    private static List<String> prepareContentPartOne(String rucksack) {
+        List<String> content = new ArrayList<String>();
+        content.add(rucksack.substring(0, rucksack.length() / 2));
+        content.add(rucksack.substring(rucksack.length() / 2));
         return content;
     }
-}
+} 
