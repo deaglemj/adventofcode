@@ -29,6 +29,22 @@ public class DayFour {
         }).reduce(0, Integer::sum);
 
         System.out.println(sumPartOne);
+
+        Integer sumPartTwo = data.stream().map( s -> s.split(",")).map( arg -> {
+            String[] pair_one = arg[0].split("-");
+            String[] pair_two = arg[1].split("-");
+
+
+
+
+            if (Integer.valueOf(pair_one[1]) >= Integer.valueOf(pair_two[0]) && Integer.valueOf(pair_one[1]) <= Integer.valueOf(pair_two[1]) ||
+            Integer.valueOf(pair_two[1]) >= Integer.valueOf(pair_one[0]) && Integer.valueOf(pair_two[1]) <= Integer.valueOf(pair_one[1])){
+                return 1;
+            }
+            return 0;
+        }).reduce(0, Integer::sum);
+
+        System.out.println(sumPartTwo);
     }
 
 } 
