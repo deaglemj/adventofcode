@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DayFour {
@@ -17,34 +16,37 @@ public class DayFour {
         // Path path = Paths.get("src/main/resources/year2022/day_four_sample.txt");
 
         List<String> data = Files.readAllLines(path);
-        Integer sumPartOne = data.stream().map( s -> s.split(",")).map( arg -> {
-            String[] pair_one = arg[0].split("-");
-            String[] pair_two = arg[1].split("-");
-
-            if(Integer.valueOf(pair_one[0]) >= Integer.valueOf(pair_two[0]) && Integer.valueOf(pair_one[1]) <= Integer.valueOf(pair_two[1]) ||
-            Integer.valueOf(pair_one[0]) <= Integer.valueOf(pair_two[0]) && Integer.valueOf(pair_one[1]) >= Integer.valueOf(pair_two[1])){
-                return 1;
-            }
-            return 0;
-        }).reduce(0, Integer::sum);
+        Integer sumPartOne = data.stream().map(DayFour::splitPair).map(DayFour::calcPartOne).reduce(0, Integer::sum);
+        Integer sumPartTwo = data.stream().map(DayFour::splitPair).map(DayFour::calcPartTwo).reduce(0, Integer::sum);
 
         System.out.println(sumPartOne);
-
-        Integer sumPartTwo = data.stream().map( s -> s.split(",")).map( arg -> {
-            String[] pair_one = arg[0].split("-");
-            String[] pair_two = arg[1].split("-");
-
-
-
-
-            if (Integer.valueOf(pair_one[1]) >= Integer.valueOf(pair_two[0]) && Integer.valueOf(pair_one[1]) <= Integer.valueOf(pair_two[1]) ||
-            Integer.valueOf(pair_two[1]) >= Integer.valueOf(pair_one[0]) && Integer.valueOf(pair_two[1]) <= Integer.valueOf(pair_one[1])){
-                return 1;
-            }
-            return 0;
-        }).reduce(0, Integer::sum);
-
         System.out.println(sumPartTwo);
     }
 
-} 
+    private static Integer calcPartOne(Pair[] pairs) {
+        return pairs[0].min >= pairs[1].min && pairs[0].max <= pairs[1].max ||
+                pairs[0].min <= pairs[1].min && pairs[0].max >= pairs[1].max ? 1 : 0;
+    }
+
+    private static Integer calcPartTwo(Pair[] pairs) {
+        return pairs[0].max >= pairs[1].min && pairs[0].max <= pairs[1].max ||
+                pairs[1].max >= pairs[0].min && pairs[1].max <= pairs[0].max ? 1 : 0;
+
+    private static Pair[] splitPair(String s) {
+        String[] parts = s.split(",");
+        return new Pair[] { Pair.from(parts[0]), Pair.from(parts[1]) };
+    }
+
+    static class Pair {
+        Integer min, max;
+
+        public static Pair from(String part) {
+            Pair p = new Pair();
+            String[] split_part = part.split("-");
+            p.min = Integer.parseInt(split_part[0]);
+            p.max = Integer.parseInt(split_part[1]);
+            return p;
+        }
+    }
+
+}
