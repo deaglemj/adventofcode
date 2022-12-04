@@ -31,7 +31,7 @@ public class DayFour {
     private static Integer calcPartTwo(Pair[] pairs) {
         return pairs[0].max >= pairs[1].min && pairs[0].max <= pairs[1].max ||
                 pairs[1].max >= pairs[0].min && pairs[1].max <= pairs[0].max ? 1 : 0;
-
+    }
     private static Pair[] splitPair(String s) {
         String[] parts = s.split(",");
         return new Pair[] { Pair.from(parts[0]), Pair.from(parts[1]) };
