@@ -44,13 +44,14 @@ public class DayFour {
     }
 
     static class Pair {
-        Integer min, max;
+        Integer min;
+        Integer max;
 
         public static Pair from(String part) {
             Pair p = new Pair();
-            String[] split_part = part.split("-");
-            p.min = Integer.parseInt(split_part[0]);
-            p.max = Integer.parseInt(split_part[1]);
+            String[] split = part.split("-");
+            p.min = Integer.parseInt(split[0]);
+            p.max = Integer.parseInt(split[1]);
             return p;
         }
     }
