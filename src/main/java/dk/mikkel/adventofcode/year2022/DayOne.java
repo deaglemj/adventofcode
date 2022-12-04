@@ -1,7 +1,5 @@
 package dk.mikkel.adventofcode.year2022;
 
-import static java.lang.System.out;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,7 +9,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class DayOne {
+
+    private static Logger logger = LogManager.getLogger(DayOne.class);
 
     /**
      * @param args
@@ -33,8 +36,7 @@ public class DayOne {
             currentCalories += Integer.parseInt(row);
         }
         Collections.sort(totalCalories, Comparator.reverseOrder());
-
-        out.println(totalCalories.get(0));
-        out.println(totalCalories.stream().limit(3).reduce(0, Integer::sum));
+        logger.info(totalCalories.get(0));
+        logger.info(totalCalories.stream().limit(3).reduce(0, Integer::sum));
     }
 }

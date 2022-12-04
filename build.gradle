@@ -11,5 +11,16 @@ repositories {
 }
 
 dependencies {
-	
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.19.0'
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.19.0'
+// 	<dependency>
+//     <groupId>org.apache.logging.log4j</groupId>
+//     <artifactId>log4j-api</artifactId>
+//     <version>2.6.1</version>
+// </dependency>
+// <dependency>
+//     <groupId>org.apache.logging.log4j</groupId>
+//     <artifactId>log4j-core</artifactId>
+//     <version>2.6.1</version>
+// </dependency>
 }

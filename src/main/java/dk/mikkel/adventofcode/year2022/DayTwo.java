@@ -1,7 +1,5 @@
 package dk.mikkel.adventofcode.year2022;
 
-import static java.lang.System.out;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,7 +7,12 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Function;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class DayTwo {
+
+    private static Logger logger = LogManager.getLogger(DayTwo.class);
 
     /**
      * @param args
@@ -22,18 +25,17 @@ public class DayTwo {
         Integer resultPartOne = calculate(data, game -> calcPartOne(game[0], game[1]));
         Integer resultPartTwo = calculate(data, game -> calcPartTwo(game[0], game[1]));
 
-        out.println(resultPartOne);
-        out.println(resultPartTwo);
+        logger.info(resultPartOne);
+        logger.info(resultPartTwo);
     }
 
     private static Integer calculate(List<String> data, Function<Integer[], Integer> calcFuntion) {
-        return data.stream().map(DayTwo::makeRound).map(calcFuntion).reduce(0, (arg0, arg1) -> Integer.sum(arg0, arg1));
+        return data.stream().map(DayTwo::makeRound).map(calcFuntion).reduce(0, Integer::sum);
     }
 
     private static Integer[] makeRound(String s) {
         String[] split = s.split(" ");
-        Integer[] game = { split[0].charAt(0) - 64, split[1].charAt(0) - 87 };
-        return game;
+        return new Integer[] { split[0].charAt(0) - 64, split[1].charAt(0) - 87 };
     }
 
     private static Integer calcPartOne(int elf, int player) {
