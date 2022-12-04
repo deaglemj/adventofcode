@@ -39,20 +39,17 @@ public class DayFour {
     }
 
     private static Pair[] splitPair(String s) {
-        String[] parts = s.split(",");
-        return new Pair[] { Pair.from(parts[0]), Pair.from(parts[1]) };
+        String[] parts = s.split("[,-]");
+        return new Pair[] { new Pair(parts[0], parts[1]), new Pair(parts[2], parts[3]) };
     }
 
     static class Pair {
         Integer min;
         Integer max;
 
-        public static Pair from(String part) {
-            Pair p = new Pair();
-            String[] split = part.split("-");
-            p.min = Integer.parseInt(split[0]);
-            p.max = Integer.parseInt(split[1]);
-            return p;
+        public Pair(String min, String max) {
+            this.min = Integer.parseInt(min);
+            this.max = Integer.parseInt(max);
         }
     }
 
