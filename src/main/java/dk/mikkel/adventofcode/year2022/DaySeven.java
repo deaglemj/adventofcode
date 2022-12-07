@@ -26,13 +26,9 @@ public class DaySeven {
     public static void main(String[] args) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("src/main/resources/year2022/day_seven.txt"));
 
-        String[] meta = { "dir", "/" };
         List<Integer> sizes = new ArrayList<>();
-        File currentDirectory = new File(meta);
-        int lineCount = lines.size();
-
-        for (int i = 1; i < lineCount; i++) {
-            String line = lines.get(i);
+        File currentDirectory = new File(new String[] { "dir", "/" });
+        for (String line : lines) {
             String[] split = line.split(" ");
             if ("$".equals(split[0])) {
                 if ("cd".equals(split[1])) {
@@ -40,8 +36,7 @@ public class DaySeven {
                         currentDirectory.files.get(split[2]).parent = currentDirectory;
                         currentDirectory = currentDirectory.files.get(split[2]);
                     } else {
-                        currentDirectory.size = currentDirectory.getSize();
-                        sizes.add(currentDirectory.size);
+                        appendSize(sizes, currentDirectory);
                         currentDirectory = currentDirectory.parent;
                     }
                 }
@@ -51,19 +46,21 @@ public class DaySeven {
             }
         }
         while (currentDirectory.parent != null) {
-            currentDirectory.size = currentDirectory.getSize();
-            sizes.add(currentDirectory.size);
+            appendSize(sizes, currentDirectory);
             currentDirectory = currentDirectory.parent;
-
         }
-        currentDirectory.size = currentDirectory.getSize();
-        sizes.add(currentDirectory.size);
+        appendSize(sizes, currentDirectory);
 
         logger.info(sizes.stream().filter(i -> i < LIMIT).reduce(0, Integer::sum));
 
         Collections.reverse(sizes);
         int freeSpace = FILESYSTEMSIZE - currentDirectory.size;
         logger.info(sizes.stream().filter(i -> (freeSpace + i) > MINIMUMFREESIZE).sorted().limit(1).reduce(0, Integer::sum));
+    }
+
+    private static void appendSize(List<Integer> sizes, File currentDirectory) {
+        currentDirectory.size = currentDirectory.getSize();
+        sizes.add(currentDirectory.size);
     }
 
     private static class File {
@@ -84,5 +81,4 @@ public class DaySeven {
             return files.entrySet().stream().map(es -> es.getValue().size).reduce(0, Integer::sum);
         }
     }
-
 }
