@@ -17,51 +17,76 @@ public class DayEight {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        // Path path = Paths.get("src/main/resources/year2022/day_eight.txt");
+        // List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_eight_sample.txt"));
         List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_eight.txt"));
         Integer size = dataMap.size();
         int[][] heightMap = mapToArray(dataMap, size);
         int[][] visibleTreeMap = new int[size][size];
+        int scenicScore = 0;
         int count = 0;
         int length = heightMap.length - 1;
         for (int i = 1; i < length; i++) {
             for (int j = 1; j < length; j++) {
                 int currentTree = heightMap[i][j];
-                
+                int up = 0;
+                int down = 0;
+                int left = 0;
+                int right = 0;
                 for (int x = i - 1; x >= 0; x--) {
-                    if(currentTree <= heightMap[x][j]){
-                        visibleTreeMap[i][j]++;
-                        break;
+                    int tree = heightMap[x][j];
+                    up++;
+                    if (currentTree <= tree) {
+                        if ((visibleTreeMap[i][j] & 1) != 1) {
+                            visibleTreeMap[i][j] |= 1;
+                            break;
+                        }
                     }
                 }
 
                 for (int x = i + 1; x < size; x++) {
-                    if(currentTree <= heightMap[x][j]){
-                        visibleTreeMap[i][j]++;
-                        break;
+                    int tree = heightMap[x][j];
+                    down++;
+                    if (currentTree <= tree) {
+                        if ((visibleTreeMap[i][j] & 2) != 2) {
+                            visibleTreeMap[i][j] |= 2;
+                            break;
+                        }
                     }
+                    
                 }
-                
+
                 for (int y = j - 1; y >= 0; y--) {
-                    if(currentTree <= heightMap[i][y]){
-                        visibleTreeMap[i][j]++;
-                        break;
+                    int tree = heightMap[i][y];
+                    left++;
+                    if (currentTree <= tree) {
+                        if ((visibleTreeMap[i][j] & 4) != 4) {
+                            visibleTreeMap[i][j] |= 4;
+                            break;
+                        }
                     }
                 }
 
                 for (int y = j + 1; y < size; y++) {
-                    if(currentTree <= heightMap[i][y]){
-                        visibleTreeMap[i][j]++;
-                        break;
+                    int tree = heightMap[i][y];
+                    right++;
+                    if (currentTree <= tree) {
+                        if ((visibleTreeMap[i][j] & 8) != 8) {
+                            visibleTreeMap[i][j] |= 8;
+                            break;
+                        }
                     }
                 }
-                if(visibleTreeMap[i][j] == 4){
+                if (visibleTreeMap[i][j] == 15) {
                     count++;
+                }
+                int newScenicScore = up * left * down * right;
+                if (scenicScore < newScenicScore){ 
+                    scenicScore = newScenicScore;
                 }
             }
         }
-        logger.info((size*size) - count);
-        
+        logger.info((size * size) - count);
+        logger.info(scenicScore);
 
     }
 
