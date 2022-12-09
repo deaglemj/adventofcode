@@ -17,8 +17,8 @@ public class DayNine {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        // List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_eight_sample.txt"));
-        List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_eight.txt"));
+        // List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_nine_sample.txt"));
+        List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_nine.txt"));
         
 
     }

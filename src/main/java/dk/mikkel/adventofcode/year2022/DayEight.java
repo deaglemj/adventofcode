@@ -87,7 +87,6 @@ public class DayEight {
         }
         logger.info((size * size) - count);
         logger.info(scenicScore);
-
     }
 
     private static int[][] mapToArray(List<String> map, Integer size) {

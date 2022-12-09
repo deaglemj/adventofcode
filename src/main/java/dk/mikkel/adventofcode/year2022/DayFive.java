@@ -28,9 +28,7 @@ public class DayFive {
 
         List<String> lines = Files.readAllLines(path);
         List<String> initState = new ArrayList<>();
-        List<String> data = new ArrayList<>();
-
-        splitInput(lines, initState, data);
+        List<String> data = splitInput(lines, initState);
 
         final Map<Integer, Stack<String>> partOne = getInitMap(initState);
         final Map<Integer, Stack<String>> partTwo = getInitMap(initState);
@@ -42,15 +40,16 @@ public class DayFive {
         logger.info(partTwo.entrySet().stream().map(es -> es.getValue().pop()).collect(Collectors.joining("")));
     }
 
-    private static void splitInput(List<String> lines, List<String> initState, List<String> data) {
+    private static List<String> splitInput(List<String> lines, List<String> initState) {
         int size = lines.size();
         for (int i = 0; i < size; i++) {
             if (lines.get(i).isEmpty()) {
                 initState = lines.subList(0, i - 1);
-                data = lines.subList(i + 1, lines.size());
+                Collections.reverse(initState);
+                return lines.subList(i + 1, lines.size());
             }
         }
-        Collections.reverse(initState);
+        return Collections.emptyList();
     }
 
     private static void calcPartOne(List<String> data, final Map<Integer, Stack<String>> partOne) {
