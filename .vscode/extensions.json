@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+        "vscjava.vscode-java-debug",
+        "redhat.fabric8-analytics",
+        "vscjava.vscode-java-pack",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "vscjava.vscode-gradle",
+        "visualstudioexptteam.vscodeintellicode",
+        "k--kato.intellij-idea-keybindings",
+        "redhat.java",
+        "pivotal.vscode-boot-dev-pack",
+        "vscjava.vscode-java-test",
+        "redhat.vscode-xml",
+        "vscjava.vscode-spring-boot-dashboard"
+    ]
+}
