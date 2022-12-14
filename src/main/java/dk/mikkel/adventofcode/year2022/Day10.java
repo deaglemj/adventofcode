@@ -13,7 +13,6 @@ import dk.mikkel.adventofcode.util.Util;
 public class Day10 {
 
     private static final String PATH = "src/main/resources/year2022/day_10.txt";
-    // private static final String PATH = "src/main/resources/year2022/day_10_sample.txt";
     private static Logger logger = LogManager.getLogger(Day10.class);
 
     public static void main(String[] args) throws IOException {
@@ -30,6 +29,7 @@ public class Day10 {
                 signalStrength += Integer.parseInt(line.split(" ")[1]);
             }
         }
+
         logger.info(resultPartOne);
         resultPartTwo.forEach(logger::info);
     }
@@ -38,7 +38,7 @@ public class Day10 {
         if (List.of(20, 60, 100, 140, 180, 220).contains(cycle)) {
             sumPartOne += cycle * signalStrength;
         }
-        String pop = partTwo.removeLast();
+        String pop = partTwo.pop();
         pop += checkCycleAndSignalStrength((cycle % 40) + 1, signalStrength);
         partTwo.add(pop);
         if (cycle % 40 == 0) {
