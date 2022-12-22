@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -30,28 +31,30 @@ public class Day11 {
      */
     public static void main(String[] args) throws IOException {
         List<String> lines = Util.getDataAsString(PATH);
+        
+        runGames(lines, 20, 3);
+        runGames(lines, 10000, 1);
 
+    }
+
+    private static void runGames(List<String> lines, int games, int w) {
         Map<Long, Monkey> monkeys = mapData(lines);
-        for (int i = 0; i < 20; i++) {
+        Long reduce = monkeys.entrySet().stream().map(es -> es.getValue().testValue).reduce(1L, Math::multiplyExact);
+        for (int i = 0; i < games; i++) {
             monkeys.entrySet().stream().map(Entry::getValue).forEach(m -> {
                 for (Long item : m.items) {
                     m.itemsInspected++;
-                    Long worryLevel = m.runOperation(item);
+                    Long worryLevel = m.runOperation(item, arg0 -> w != 1 ? arg0 / 3 : arg0 % reduce);
                     Long receiver = m.runTest(worryLevel) ? m.receiverOnSuccess : m.receiverOnFailure;
                     monkeys.get(receiver).receiveItem(worryLevel);
-                }   
+                }
                 m.items.clear();
             });
-
-            // monkeys.entrySet().stream().map(Entry::getValue).forEach(m -> {
-            //     logger.info(String.format("Monkey %d: %s", m.id, String.join(", ", m.items.stream().map(String::valueOf).toList())));
-            // });
-            
         }
-        logger.info(monkeys.entrySet().stream().peek( e -> {
+        logger.info(monkeys.entrySet().stream().peek(e -> {
             logger.info(String.format("Monkey %d inspected items %d times.", e.getKey(), e.getValue().itemsInspected));
-        }).map(arg0 -> arg0.getValue().itemsInspected).sorted((arg0, arg1) -> arg1.compareTo(arg0)).limit(2).reduce(1L, Math::multiplyExact));
-        
+        }).map(arg0 -> arg0.getValue().itemsInspected).sorted((arg0, arg1) -> arg1.compareTo(arg0)).limit(2).reduce(1L,
+                Math::multiplyExact));
     }
 
     private static Map<Long, Monkey> mapData(List<String> lines) {
@@ -112,7 +115,7 @@ public class Day11 {
             this.id = id;
         }
 
-        public void receiveItem(Long worryLevel){
+        public void receiveItem(Long worryLevel) {
             items.add(worryLevel);
         }
 
@@ -147,13 +150,11 @@ public class Day11 {
         }
 
         public void setTestFailed(String line) {
-            receiverOnFailure =extractedInteger(line);
+            receiverOnFailure = extractedInteger(line);
         }
 
-
-        public Long runOperation(Long item) {
-            return operator.operation.apply(item, inputTwo == 0 ? item : inputTwo) / 3;
-            // return operator.operation.apply(item, inputTwo == 0 ? item : inputTwo);
+        public Long runOperation(Long item, Function<Long, Long> handleWorryLevel)  {
+            return handleWorryLevel.apply(operator.operation.apply(item, inputTwo == 0 ? item : inputTwo));
         }
 
         public boolean runTest(Long worryLevel) {
