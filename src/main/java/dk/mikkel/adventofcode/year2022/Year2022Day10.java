@@ -10,10 +10,10 @@ import org.apache.logging.log4j.Logger;
 
 import dk.mikkel.adventofcode.util.Util;
 
-public class Day10 {
+public class Year2022Day10 {
 
     private static final String PATH = "src/main/resources/year2022/day_10.txt";
-    private static Logger logger = LogManager.getLogger(Day10.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day10.class);
 
     public static void main(String[] args) throws IOException {
         List<String> lines = Util.getDataAsString(PATH);

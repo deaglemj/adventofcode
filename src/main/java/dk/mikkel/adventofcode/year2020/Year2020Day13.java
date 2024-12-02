@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import dk.mikkel.adventofcode.util.FileReader;
 import dk.mikkel.adventofcode.util.Pair;
 
-public class Day13 {
+public class Year2020Day13 {
     public static void main(String[] args) {
-        new Day13().runner();
+        new Year2020Day13().runner();
     }
 
     public void runner() {

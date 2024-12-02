@@ -6,10 +6,10 @@ import java.util.function.Function;
 
 import dk.mikkel.adventofcode.util.FileReader;
 
-public class Day24 {
+public class Year2020Day24 {
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        new Day24().runner();
+        new Year2020Day24().runner();
     }
 
     public void runner() {

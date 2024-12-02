@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DayFive {
+public class Year2022Day05 {
 
-    private static Logger logger = LogManager.getLogger(DayFive.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day05.class);
 
     /**
      * @param args

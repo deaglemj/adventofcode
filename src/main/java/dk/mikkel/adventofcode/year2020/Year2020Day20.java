@@ -11,10 +11,10 @@ import java.util.regex.Pattern;
 import dk.mikkel.adventofcode.util.FileReader;
 import dk.mikkel.adventofcode.util.Pair;
 
-public class Day20 {
+public class Year2020Day20 {
 
     public static void main(String[] args) {
-        new Day20().run();
+        new Year2020Day20().run();
     }
 
     private void run() {

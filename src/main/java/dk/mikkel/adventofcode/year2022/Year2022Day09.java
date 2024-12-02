@@ -10,14 +10,14 @@ import org.apache.logging.log4j.Logger;
 
 import dk.mikkel.adventofcode.util.Util;
 
-public class DayNine {
+public class Year2022Day09 {
 
     private static final String PATH = "src/main/resources/year2022/day_nine.txt";
     // private static final String PATH =
     // "src/main/resources/year2022/day_nine_sample.txt";
     // private static final String PATH =
     // "src/main/resources/year2022/day_nine_sample_2.txt";
-    private static Logger logger = LogManager.getLogger(DayNine.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day09.class);
 
     /**
      * @param args

@@ -5,13 +5,13 @@ import java.util.List;
 
 import dk.mikkel.adventofcode.util.FileReader;
 
-public class Day3 {
+public class Year2020Day3 {
 
     private boolean printMap = false;
     private List<String> list = FileReader.readFileToList("day_3.txt");
 
     public static void main(String[] args) {
-        new Day3().runner();
+        new Year2020Day3().runner();
     }
 
     public void runner() {

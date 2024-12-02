@@ -4,10 +4,10 @@ import java.util.List;
 
 import dk.mikkel.adventofcode.util.FileReader;
 
-public class Day18 {
+public class Year2020Day18 {
 
     public static void main(String[] args) {
-        new Day18().runner();
+        new Year2020Day18().runner();
     }
 
     public void runner() {

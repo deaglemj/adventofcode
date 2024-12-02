@@ -4,10 +4,10 @@ import dk.mikkel.adventofcode.util.FileReader;
 import dk.mikkel.adventofcode.util.LinkedList;
 import dk.mikkel.adventofcode.util.LinkedList.Node;
 
-public class Day23 {
+public class Year2020Day23 {
 
     public static void main(String[] args) {
-        new Day23().run();
+        new Year2020Day23().run();
     }
 
     private void run() {

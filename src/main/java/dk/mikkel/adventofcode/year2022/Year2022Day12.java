@@ -8,11 +8,11 @@ import org.apache.logging.log4j.Logger;
 
 import dk.mikkel.adventofcode.util.Util;
 
-public class Day12 {
+public class Year2022Day12 {
 
     // private static final String PATH = "src/main/resources/year2022/day_12.txt";
     private static final String PATH = "src/main/resources/year2022/day_12_sample.txt";
-    private static Logger logger = LogManager.getLogger(Day12.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day12.class);
 
     /**
      * @param args

@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
 
 import dk.mikkel.adventofcode.util.FileReader;
 
-public class Day19 {
+public class Year2020Day19 {
 
     public static void main(String[] args) {
-        new Day19().runner();
+        new Year2020Day19().runner();
     }
 
     public void runner() {

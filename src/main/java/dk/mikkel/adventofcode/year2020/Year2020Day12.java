@@ -5,9 +5,9 @@ import java.util.List;
 
 import dk.mikkel.adventofcode.util.FileReader;
 
-public class Day12 {
+public class Year2020Day12 {
     public static void main(String[] args) {
-        new Day12().runner();
+        new Year2020Day12().runner();
     }
 
     public void runner() {

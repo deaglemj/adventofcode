@@ -9,9 +9,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DayFour {
+public class Year2022Day04 {
 
-    private static Logger logger = LogManager.getLogger(DayFour.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day04.class);
 
     /**
      * @param args
@@ -21,8 +21,8 @@ public class DayFour {
         Path path = Paths.get("src/main/resources/year2022/day_four.txt");
 
         List<String> data = Files.readAllLines(path);
-        Integer sumPartOne = data.stream().map(DayFour::splitPair).map(DayFour::calcPartOne).reduce(0, Integer::sum);
-        Integer sumPartTwo = data.stream().map(DayFour::splitPair).map(DayFour::calcPartTwo).reduce(0, Integer::sum);
+        Integer sumPartOne = data.stream().map(Year2022Day04::splitPair).map(Year2022Day04::calcPartOne).reduce(0, Integer::sum);
+        Integer sumPartTwo = data.stream().map(Year2022Day04::splitPair).map(Year2022Day04::calcPartTwo).reduce(0, Integer::sum);
 
         logger.info(sumPartOne);
         logger.info(sumPartTwo);

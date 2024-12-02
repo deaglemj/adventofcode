@@ -1,8 +1,8 @@
 package dk.mikkel.adventofcode.year2020;
 
-public class Day25 {
+public class Year2020Day25 {
     public static void main(String[] args) {
-        new Day25().runner();
+        new Year2020Day25().runner();
     }
 
     private void runner() {

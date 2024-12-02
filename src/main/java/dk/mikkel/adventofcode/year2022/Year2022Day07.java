@@ -12,12 +12,12 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DaySeven {
+public class Year2022Day07 {
 
     private static final int LIMIT = 100000;
     private static final int FILESYSTEMSIZE = 70000000;
     private static final int MINIMUMFREESIZE = 30000000;
-    private static Logger logger = LogManager.getLogger(DaySeven.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day07.class);
 
     /**
      * @param args
