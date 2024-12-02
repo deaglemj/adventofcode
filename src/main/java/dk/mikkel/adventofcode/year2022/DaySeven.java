@@ -55,7 +55,8 @@ public class DaySeven {
 
         Collections.reverse(sizes);
         int freeSpace = FILESYSTEMSIZE - currentDirectory.size;
-        logger.info(sizes.stream().filter(i -> (freeSpace + i) > MINIMUMFREESIZE).sorted().limit(1).reduce(0, Integer::sum));
+        logger.info(sizes.stream().filter(i -> (freeSpace + i) > MINIMUMFREESIZE).sorted().limit(1).reduce(0,
+                Integer::sum));
     }
 
     private static void appendSize(List<Integer> sizes, File currentDirectory) {

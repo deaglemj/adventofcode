@@ -1,12 +1,12 @@
-package advent_of_code.year2020;
-
-import util.FileReader;
-import util.Pair;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import dk.mikkel.adventofcode.util.FileReader;
+import dk.mikkel.adventofcode.util.Pair;
 
 public class Day13 {
     public static void main(String[] args) {
@@ -22,7 +22,8 @@ public class Day13 {
     private void puzzleOne(List<String> input) {
         Pair<Integer, Double> found = null;
         Double estimatedTime = Double.parseDouble(input.get(0));
-        List<Integer> busses = Arrays.stream(input.get(1).split(",")).filter(s -> !s.equals("x")).map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> busses = Arrays.stream(input.get(1).split(",")).filter(s -> !s.equals("x")).map(Integer::parseInt)
+                .collect(Collectors.toList());
         for (int bus : busses) {
             double nextBusTime = Math.ceil(estimatedTime / bus);
             double waitTime = (nextBusTime * bus) - estimatedTime;
@@ -99,14 +100,16 @@ public class Day13 {
         }
     }
 
-//    private boolean nextBus(List<Integer> busses, int nextBus, long earliestTimestamp) {
-//        Integer currentBus = busses.get(nextBus);
-//        boolean b = earliestTimestamp % currentBus == 0;
-//        boolean outOffService = currentBus == -1;
-//        if(!(b || outOffService)){
-//            return false;
-//        }
-//        boolean next = busses.size() == nextBus + 1 || nextBus(busses, nextBus + 1, earliestTimestamp + 1);
-//        return next;
-//    }
+    // private boolean nextBus(List<Integer> busses, int nextBus, long
+    // earliestTimestamp) {
+    // Integer currentBus = busses.get(nextBus);
+    // boolean b = earliestTimestamp % currentBus == 0;
+    // boolean outOffService = currentBus == -1;
+    // if(!(b || outOffService)){
+    // return false;
+    // }
+    // boolean next = busses.size() == nextBus + 1 || nextBus(busses, nextBus + 1,
+    // earliestTimestamp + 1);
+    // return next;
+    // }
 }

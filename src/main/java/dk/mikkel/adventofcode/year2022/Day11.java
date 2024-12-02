@@ -22,7 +22,8 @@ import dk.mikkel.adventofcode.util.Util;
 public class Day11 {
 
     private static final String PATH = "src/main/resources/year2022/day_11.txt";
-    // private static final String PATH = "src/main/resources/year2022/day_11_sample.txt";
+    // private static final String PATH =
+    // "src/main/resources/year2022/day_11_sample.txt";
     private static Logger logger = LogManager.getLogger(Day11.class);
 
     /**
@@ -31,7 +32,7 @@ public class Day11 {
      */
     public static void main(String[] args) throws IOException {
         List<String> lines = Util.getDataAsString(PATH);
-        
+
         runGames(lines, 20, 3);
         runGames(lines, 10000, 1);
 
@@ -153,7 +154,7 @@ public class Day11 {
             receiverOnFailure = extractedInteger(line);
         }
 
-        public Long runOperation(Long item, Function<Long, Long> handleWorryLevel)  {
+        public Long runOperation(Long item, Function<Long, Long> handleWorryLevel) {
             return handleWorryLevel.apply(operator.operation.apply(item, inputTwo == 0 ? item : inputTwo));
         }
 

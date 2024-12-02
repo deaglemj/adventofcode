@@ -1,10 +1,10 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
 public class Day24 {
 
@@ -38,7 +38,9 @@ public class Day24 {
             List<Tile> flippedQueue = new ArrayList<>();
 
             List<Tile> tmp = new ArrayList<>(visited);
-            tmp.forEach(tile -> tile.getNeighbors(visited).stream().filter(neighbor -> !visited.contains(neighbor) && flip(visited, flippedQueue, neighbor)).forEach(visited::add));
+            tmp.forEach(tile -> tile.getNeighbors(visited).stream()
+                    .filter(neighbor -> !visited.contains(neighbor) && flip(visited, flippedQueue, neighbor))
+                    .forEach(visited::add));
 
             for (int j = 0; j < visited.size(); j++) {
                 Tile tile = visited.get(j);
@@ -164,7 +166,8 @@ public class Day24 {
             return neighbors;
         }
 
-        private void neighborTile(List<Tile> visited, Function<Tile, Tile> function, List<Tile> neighbors) throws CloneNotSupportedException {
+        private void neighborTile(List<Tile> visited, Function<Tile, Tile> function, List<Tile> neighbors)
+                throws CloneNotSupportedException {
             Tile tile = function.apply(((Tile) this.clone()));
             int index = visited.indexOf(tile);
             if (index != -1) {

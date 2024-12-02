@@ -1,11 +1,10 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import advent_of_code.year2020.Day2.PasswordInfo;
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
 public class Day2 {
 
@@ -14,8 +13,12 @@ public class Day2 {
     }
 
     public void runner() {
-        List<PasswordInfo> puzzleOne =  FileReader.readFileToList("day_2.txt").stream().flatMap(s -> Stream.of(new PasswordInfo(s))).filter(PasswordInfo::puzzleOne).collect(Collectors.toList());
-        List<PasswordInfo> puzzleTwo =  FileReader.readFileToList("day_2.txt").stream().flatMap(s -> Stream.of(new PasswordInfo(s))).filter(PasswordInfo::puzzleTwo).collect(Collectors.toList());
+        List<PasswordInfo> puzzleOne = FileReader.readFileToList("day_2.txt").stream()
+                .flatMap(s -> Stream.of(new PasswordInfo(s))).filter(PasswordInfo::puzzleOne)
+                .collect(Collectors.toList());
+        List<PasswordInfo> puzzleTwo = FileReader.readFileToList("day_2.txt").stream()
+                .flatMap(s -> Stream.of(new PasswordInfo(s))).filter(PasswordInfo::puzzleTwo)
+                .collect(Collectors.toList());
 
         System.out.println("Day 2: Password Philosophy : Puzzle 1 :" + puzzleOne.size());
         System.out.println("Day 2: Password Philosophy : Puzzle 2 :" + puzzleTwo.size());

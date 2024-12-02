@@ -1,4 +1,4 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 public class Day25 {
     public static void main(String[] args) {

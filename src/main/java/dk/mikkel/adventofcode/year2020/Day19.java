@@ -1,4 +1,4 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
 public class Day19 {
 

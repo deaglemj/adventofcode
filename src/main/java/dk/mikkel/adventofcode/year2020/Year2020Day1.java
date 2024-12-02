@@ -1,15 +1,16 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
-public class Day1 {
+public class Year2020Day1 {
     public static void main(String[] args) {
-        new Day1().runner();
+        new Year2020Day1().runner();
     }
 
     public void runner() {
 
-        Integer[] input = FileReader.readFileToList("day_1.txt").stream().map(Integer::parseInt).toArray(Integer[]::new);
+        Integer[] input = FileReader.readFileToList("day_1.txt").stream().map(Integer::parseInt)
+                .toArray(Integer[]::new);
 
         boolean puzzleOneNFound = false;
         boolean puzzleTwoFound = false;

@@ -1,4 +1,4 @@
-package util;
+package dk.mikkel.adventofcode.util;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,10 +1,10 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
 public class Day22 {
 
@@ -55,7 +55,8 @@ public class Day22 {
     private void calculateScore(PlayerDeck playerDeckDeckOne, PlayerDeck playerDeckDeckTwo) {
         long result = 0;
 
-        List<Integer> cards = playerDeckDeckOne.getCards().size() > 0 ? playerDeckDeckOne.getCards() : playerDeckDeckTwo.getCards();
+        List<Integer> cards = playerDeckDeckOne.getCards().size() > 0 ? playerDeckDeckOne.getCards()
+                : playerDeckDeckTwo.getCards();
         for (int i = 0; i < cards.size(); i++) {
             int i1 = (cards.size() - i) * cards.get(i);
             result += i1;
@@ -85,7 +86,8 @@ public class Day22 {
         boolean playerOneForceWin = false;
         List<String> playedDecks = new ArrayList<>();
         while (playerDeckDeckOne.getCards().size() > 0 && playerDeckDeckTwo.getCards().size() > 0) {
-            String cards = playerDeckDeckOne.getCards().stream().map(Object::toString).collect(Collectors.joining(", "));
+            String cards = playerDeckDeckOne.getCards().stream().map(Object::toString)
+                    .collect(Collectors.joining(", "));
             if (playedDecks.contains(cards)) {
                 playerOneForceWin = true;
                 break;
@@ -96,8 +98,11 @@ public class Day22 {
             Integer playerTwoCard = playerDeckDeckTwo.getCards().remove(0);
 
             boolean playerOneWins = playerOneCard > playerTwoCard;
-            if (playerDeckDeckOne.getCards().size() >= playerOneCard && playerDeckDeckTwo.getCards().size() >= playerTwoCard) {
-                playerOneWins = runRecursiveGame(PlayerDeck.fromCards(new ArrayList<>(playerDeckDeckOne.getCards()).subList(0, playerOneCard)), PlayerDeck.fromCards(new ArrayList<>(playerDeckDeckTwo.getCards()).subList(0, playerTwoCard)));
+            if (playerDeckDeckOne.getCards().size() >= playerOneCard
+                    && playerDeckDeckTwo.getCards().size() >= playerTwoCard) {
+                playerOneWins = runRecursiveGame(
+                        PlayerDeck.fromCards(new ArrayList<>(playerDeckDeckOne.getCards()).subList(0, playerOneCard)),
+                        PlayerDeck.fromCards(new ArrayList<>(playerDeckDeckTwo.getCards()).subList(0, playerTwoCard)));
             }
             if (playerOneWins) {
                 playerDeckDeckOne.addCards(playerOneCard);

@@ -1,4 +1,4 @@
-package util;
+package dk.mikkel.adventofcode.util;
 
 public class Pair<T, U> {
     public T a;

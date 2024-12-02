@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Util {
 
-    public static List<String> getDataAsString(String path) throws IOException{
+    public static List<String> getDataAsString(String path) throws IOException {
         return Files.readAllLines(Paths.get(path));
     }
 

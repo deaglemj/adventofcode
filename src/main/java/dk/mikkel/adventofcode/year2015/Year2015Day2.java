@@ -1,11 +1,11 @@
-package advent_of_code;
+package dk.mikkel.adventofcode.year2015;
 
-import util.Base;
+import dk.mikkel.adventofcode.util.Base;
 
-public class Day_2015_2 extends Base<Integer, Integer> {
+public class Year2015Day2 extends Base<Integer, Integer> {
 
     @Override
-    public Integer solve_part_1(String input) {
+    public Integer solvePart1(String input) {
         int totalSquareFeetOfWrappingPaper = 0;
         String[] presents = input.split("\n");
         for (String present : presents) {
@@ -20,7 +20,7 @@ public class Day_2015_2 extends Base<Integer, Integer> {
     }
 
     @Override
-    public Integer solve_part_2(String input) {
+    public Integer solvePart2(String input) {
         int totalSquareFeetOfRibbon = 0;
         String[] presents = input.split("\n");
         for (String present : presents) {

@@ -24,7 +24,7 @@ public class DayThree {
         List<String> data = Files.readAllLines(path);
         Integer sumPartOne = data.stream().map(DayThree::prepareContentPartOne).map(DayThree::findbadge)
                 .map(DayThree::convertCharToIntChar).reduce(0, Integer::sum);
-        
+
         List<List<String>> initial = new ArrayList<>();
         initial.add(new ArrayList<>());
         Integer sumPartTwo = data.stream()

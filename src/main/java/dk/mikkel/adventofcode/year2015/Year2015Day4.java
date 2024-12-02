@@ -1,19 +1,18 @@
-package advent_of_code;
+package dk.mikkel.adventofcode.year2015;
 
-import util.Base;
+import dk.mikkel.adventofcode.util.Base;
+import dk.mikkel.adventofcode.util.Encrypt;
 
-public class Day_2015_4 extends Base<Integer, Integer> {
+public class Year2015Day4 extends Base<Integer, Integer> {
 
     @Override
-    public Integer solve_part_1(String input) {
+    public Integer solvePart1(String input) {
         String prefix = "00000";
         return searchForMatchingPrefix(input, prefix);
     }
 
-
-
     @Override
-    public Integer solve_part_2(String input) {
+    public Integer solvePart2(String input) {
         String prefix = "000000";
         return searchForMatchingPrefix(input, prefix);
     }
@@ -22,7 +21,7 @@ public class Day_2015_4 extends Base<Integer, Integer> {
         int counter = 0;
         while (true) {
             String s = input + counter;
-            String result = util.Encrypt.stringToMD5Hex(s);
+            String result = Encrypt.stringToMD5Hex(s);
             if (result.startsWith(prefix)) {
                 break;
             }

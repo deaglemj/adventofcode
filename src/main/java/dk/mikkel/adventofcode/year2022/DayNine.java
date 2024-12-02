@@ -13,8 +13,10 @@ import dk.mikkel.adventofcode.util.Util;
 public class DayNine {
 
     private static final String PATH = "src/main/resources/year2022/day_nine.txt";
-    // private static final String PATH = "src/main/resources/year2022/day_nine_sample.txt";
-    // private static final String PATH = "src/main/resources/year2022/day_nine_sample_2.txt";
+    // private static final String PATH =
+    // "src/main/resources/year2022/day_nine_sample.txt";
+    // private static final String PATH =
+    // "src/main/resources/year2022/day_nine_sample_2.txt";
     private static Logger logger = LogManager.getLogger(DayNine.class);
 
     /**

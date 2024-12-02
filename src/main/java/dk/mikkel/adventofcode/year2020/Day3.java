@@ -1,9 +1,9 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
 public class Day3 {
 
@@ -18,20 +18,21 @@ public class Day3 {
         puzzleOne();
         puzzleTwo();
     }
+
     private void puzzleOne() {
         List<int[]> list = new ArrayList<>();
-        list.add(new int[]{3, 1});
+        list.add(new int[] { 3, 1 });
 
         runMap(list);
     }
 
     private void puzzleTwo() {
         List<int[]> list = new ArrayList<>();
-        list.add(new int[]{1, 1});
-        list.add(new int[]{3, 1});
-        list.add(new int[]{5, 1});
-        list.add(new int[]{7, 1});
-        list.add(new int[]{1, 2});
+        list.add(new int[] { 1, 1 });
+        list.add(new int[] { 3, 1 });
+        list.add(new int[] { 5, 1 });
+        list.add(new int[] { 7, 1 });
+        list.add(new int[] { 1, 2 });
 
         runMap(list);
     }
@@ -48,7 +49,7 @@ public class Day3 {
     private int calcResult(int right, int down) {
         Integer position = 0;
         int treeCount = 0;
-        if(printMap) {
+        if (printMap) {
             System.out.println(list.get(0));
         }
         for (int i = down, listSize = list.size(); i < listSize; i += down) {
@@ -66,7 +67,7 @@ public class Day3 {
                 treeCount++;
                 isTree = 'X';
             }
-            if(printMap){
+            if (printMap) {
                 System.out.println(map.substring(0, position) + isTree + map.substring(position + 1));
             }
         }

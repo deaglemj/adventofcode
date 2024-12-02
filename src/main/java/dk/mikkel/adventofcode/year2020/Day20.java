@@ -1,4 +1,4 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,8 +8,8 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import util.FileReader;
-import util.Pair;
+import dk.mikkel.adventofcode.util.FileReader;
+import dk.mikkel.adventofcode.util.Pair;
 
 public class Day20 {
 

@@ -1,10 +1,10 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
 public class Day10 {
 
@@ -18,7 +18,8 @@ public class Day10 {
     }
 
     private void puzzleOne() {
-        List<Integer> list = FileReader.readFileToList("day_10.txt").stream().map(Integer::parseInt).sorted().collect(Collectors.toList());
+        List<Integer> list = FileReader.readFileToList("day_10.txt").stream().map(Integer::parseInt).sorted()
+                .collect(Collectors.toList());
         int ones = 0;
         int twos = 0;
         int threes = 1;
@@ -45,7 +46,8 @@ public class Day10 {
     private void puzzleTwo() {
         List<Node> list = new ArrayList<>();
         list.add(new Node(0));
-        list.addAll(FileReader.readFileToList("day_10.txt").stream().map(Integer::parseInt).sorted().map(Node::new).collect(Collectors.toList()));
+        list.addAll(FileReader.readFileToList("day_10.txt").stream().map(Integer::parseInt).sorted().map(Node::new)
+                .collect(Collectors.toList()));
 
         int start = 0;
         Node current = list.get(start);
@@ -77,6 +79,7 @@ public class Day10 {
         }
         return current.count;
     }
+
     class Node {
 
         long count = 0;
@@ -95,6 +98,7 @@ public class Day10 {
         public List<Node> getList() {
             return list;
         }
+
         public void setList(List<Node> list) {
             this.list = list;
         }

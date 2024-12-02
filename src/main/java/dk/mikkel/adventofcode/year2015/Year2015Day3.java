@@ -1,14 +1,14 @@
-package advent_of_code;
+package dk.mikkel.adventofcode.year2015;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import util.Base;
+import dk.mikkel.adventofcode.util.Base;
 
-public class Day_2015_3 extends Base<Integer, Integer> {
+public class Year2015Day3 extends Base<Integer, Integer> {
 
     @Override
-    public Integer solve_part_1(String input) {
+    public Integer solvePart1(String input) {
         Vector santa = Vector.of(0, 0);
         Set<Vector> visited = new HashSet<>();
         visited.add(santa);
@@ -22,7 +22,7 @@ public class Day_2015_3 extends Base<Integer, Integer> {
     }
 
     @Override
-    public Integer solve_part_2(String input) {
+    public Integer solvePart2(String input) {
         Vector santa = Vector.of(0, 0);
         Vector roboSanta = Vector.of(0, 0);
         Set<Vector> visited = new HashSet<>();

@@ -17,7 +17,8 @@ public class DayEight {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        // List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_nine_sample.txt"));
+        // List<String> dataMap =
+        // Files.readAllLines(Paths.get("src/main/resources/year2022/day_nine_sample.txt"));
         List<String> dataMap = Files.readAllLines(Paths.get("src/main/resources/year2022/day_ninet.txt"));
         Integer size = dataMap.size();
         int[][] heightMap = mapToArray(dataMap, size);
@@ -52,7 +53,7 @@ public class DayEight {
                             break;
                         }
                     }
-                    
+
                 }
 
                 for (int y = j - 1; y >= 0; y--) {
@@ -80,7 +81,7 @@ public class DayEight {
                     count++;
                 }
                 int newScenicScore = up * left * down * right;
-                if (scenicScore < newScenicScore){ 
+                if (scenicScore < newScenicScore) {
                     scenicScore = newScenicScore;
                 }
             }

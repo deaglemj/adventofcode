@@ -1,4 +1,4 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import util.FileReader;
+import dk.mikkel.adventofcode.util.FileReader;
 
 public class Day15 {
 
@@ -16,7 +16,8 @@ public class Day15 {
     }
 
     private void run() {
-        List<Long> inputs = Arrays.stream(FileReader.readFileToList("day_15.txt").get(0).split(",")).map(Long::parseLong).collect(Collectors.toList());
+        List<Long> inputs = Arrays.stream(FileReader.readFileToList("day_15.txt").get(0).split(","))
+                .map(Long::parseLong).collect(Collectors.toList());
         puzzle(inputs, 2020);
         puzzle(inputs, 30000000);
     }

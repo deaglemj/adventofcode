@@ -1,8 +1,8 @@
-package advent_of_code.year2020;
+package dk.mikkel.adventofcode.year2020;
 
-import util.LinkedList.Node;
-import util.FileReader;
-import util.LinkedList;
+import dk.mikkel.adventofcode.util.FileReader;
+import dk.mikkel.adventofcode.util.LinkedList;
+import dk.mikkel.adventofcode.util.LinkedList.Node;
 
 public class Day23 {
 

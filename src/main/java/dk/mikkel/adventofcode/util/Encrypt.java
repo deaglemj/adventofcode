@@ -1,4 +1,4 @@
-package util;
+package dk.mikkel.adventofcode.util;
 
 public class Encrypt {
 
@@ -7,7 +7,7 @@ public class Encrypt {
 
     public static String stringToMD5Hex(String s) {
         StringBuilder result = new StringBuilder();
-        
+
         try {
             java.security.MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
             byte[] inputBytes = (s).getBytes();
