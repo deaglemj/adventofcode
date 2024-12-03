@@ -10,7 +10,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class FileReader {
+
+    private static Logger logger = LogManager.getLogger(FileReader.class);
+
+    private FileReader() {
+    }
 
     public static String readResourceFile(String filePath) {
         StringBuilder resultStringBuilder = new StringBuilder();
@@ -22,8 +30,8 @@ public class FileReader {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading file: " + filePath);
-            throw new RuntimeException(e);
+            logger.info("Error reading file: {}", filePath);
+            throw new FileReaderException(e);
         }
         return resultStringBuilder.toString().trim();
     }
@@ -33,8 +41,15 @@ public class FileReader {
             File file = Paths.get(ClassLoader.getSystemResource(filename).toURI()).toFile();
             return Files.readAllLines(file.toPath());
         } catch (URISyntaxException | IOException e) {
-            e.printStackTrace();
+            logger.catching(e);
         }
         return List.of();
+    }
+
+    public static class FileReaderException extends RuntimeException {
+
+        public FileReaderException(Throwable cause) {
+            super(cause);
+        }
     }
 }

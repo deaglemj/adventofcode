@@ -4,24 +4,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import dk.mikkel.adventofcode.util.FileReader;
 
 public class Year2020Day02 {
+
+    private static Logger logger = LogManager.getLogger(Year2020Day02.class);
 
     public static void main(String[] args) {
         new Year2020Day02().runner();
     }
 
     public void runner() {
-        List<PasswordInfo> puzzleOne = FileReader.readFileToList("day_2.txt").stream()
+        List<PasswordInfo> puzzleOne = FileReader.readFileToList("year2020/day_02.input").stream()
                 .flatMap(s -> Stream.of(new PasswordInfo(s))).filter(PasswordInfo::puzzleOne)
                 .collect(Collectors.toList());
-        List<PasswordInfo> puzzleTwo = FileReader.readFileToList("day_2.txt").stream()
+        List<PasswordInfo> puzzleTwo = FileReader.readFileToList("year2020/day_02.input").stream()
                 .flatMap(s -> Stream.of(new PasswordInfo(s))).filter(PasswordInfo::puzzleTwo)
                 .collect(Collectors.toList());
 
-        System.out.println("Day 2: Password Philosophy : Puzzle 1 :" + puzzleOne.size());
-        System.out.println("Day 2: Password Philosophy : Puzzle 2 :" + puzzleTwo.size());
+        logger.info("Day 2: Password Philosophy : Puzzle 1 : {}", puzzleOne.size());
+        logger.info("Day 2: Password Philosophy : Puzzle 2 : {}", puzzleTwo.size());
     }
 
     class PasswordInfo {
@@ -46,10 +51,8 @@ public class Year2020Day02 {
         public boolean puzzleOne() {
             int charCount = 0;
             for (char c : password.toCharArray()) {
-                if (c == required) {
-                    if (++charCount > max) {
-                        return false;
-                    }
+                if (c == required && ++charCount > max) {
+                    return false;
                 }
             }
             return charCount >= min;

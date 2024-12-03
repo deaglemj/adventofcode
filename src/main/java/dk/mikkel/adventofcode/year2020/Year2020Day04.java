@@ -4,9 +4,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import dk.mikkel.adventofcode.util.FileReader;
 
 public class Year2020Day04 {
+
+    private static Logger logger = LogManager.getLogger(Year2020Day04.class);
 
     public static void main(String[] args) {
         new Year2020Day04().run();
@@ -18,7 +23,7 @@ public class Year2020Day04 {
     }
 
     private void validPassports(boolean isPuzzleOne) {
-        List<String> passports = FileReader.readFileToList("day_4.txt");
+        List<String> passports = FileReader.readFileToList("year2020/day_04.input");
         Passport passport = new Passport();
         int count = 0;
         for (String pass : passports) {
@@ -35,7 +40,7 @@ public class Year2020Day04 {
             }
         }
         count = setCount(passport, count, isPuzzleOne);
-        System.out.println(count);
+        logger.info(count);
     }
 
     private int setCount(Passport passport, int count, boolean isPuzzleOne) {
@@ -102,7 +107,7 @@ public class Year2020Day04 {
         }
 
         private boolean checkHcl(String hcl) {
-            Pattern pattern = Pattern.compile("\\#([a-fA-F0-9]{6})", Pattern.CASE_INSENSITIVE);
+            Pattern pattern = Pattern.compile("\\#([a-f0-9]{6})", Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(hcl);
             return matcher.find();
         }
@@ -139,32 +144,20 @@ public class Year2020Day04 {
 
         public void setProperty(String property) {
             String[] split = property.split(":");
-            switch (split[0]) {
-                case "byr":
-                    byr = split[1];
-                    break;
-                case "iyr":
-                    iyr = split[1];
-                    break;
-                case "eyr":
-                    eyr = split[1];
-                    break;
-                case "hgt":
-                    hgt = split[1];
-                    break;
-                case "hcl":
-                    hcl = split[1];
-                    break;
-                case "ecl":
-                    ecl = split[1];
-                    break;
-                case "pid":
-                    pid = split[1];
-                    break;
-                case "cid":
-                    cid = split[1];
-                    break;
+            switch (PassportField.valueOf(split[0].toUpperCase())) {
+                case BYR -> byr = split[1];
+                case IYR -> iyr = split[1];
+                case EYR -> eyr = split[1];
+                case HGT -> hgt = split[1];
+                case HCL -> hcl = split[1];
+                case ECL -> ecl = split[1];
+                case PID -> pid = split[1];
+                case CID -> cid = split[1];
             }
+        }
+
+        public enum PassportField {
+            BYR, IYR, EYR, HGT, HCL, ECL, PID, CID
         }
     }
 }
