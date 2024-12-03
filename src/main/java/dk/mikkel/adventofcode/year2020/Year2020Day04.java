@@ -6,10 +6,10 @@ import java.util.regex.Pattern;
 
 import dk.mikkel.adventofcode.util.FileReader;
 
-public class Year2020Day4 {
+public class Year2020Day04 {
 
     public static void main(String[] args) {
-        new Year2020Day4().run();
+        new Year2020Day04().run();
     }
 
     public void run() {

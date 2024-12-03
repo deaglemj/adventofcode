@@ -9,9 +9,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DaySix {
+public class Year2022Day06 {
 
-    private static Logger logger = LogManager.getLogger(DaySix.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day06.class);
 
     /**
      * @param args

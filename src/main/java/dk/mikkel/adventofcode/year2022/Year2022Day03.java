@@ -10,9 +10,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DayThree {
+public class Year2022Day03 {
 
-    private static Logger logger = LogManager.getLogger(DayThree.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day03.class);
 
     /**
      * @param args
@@ -22,15 +22,15 @@ public class DayThree {
         Path path = Paths.get("src/main/resources/year2022/day_three.txt");
 
         List<String> data = Files.readAllLines(path);
-        Integer sumPartOne = data.stream().map(DayThree::prepareContentPartOne).map(DayThree::findbadge)
-                .map(DayThree::convertCharToIntChar).reduce(0, Integer::sum);
+        Integer sumPartOne = data.stream().map(Year2022Day03::prepareContentPartOne).map(Year2022Day03::findbadge)
+                .map(Year2022Day03::convertCharToIntChar).reduce(0, Integer::sum);
 
         List<List<String>> initial = new ArrayList<>();
         initial.add(new ArrayList<>());
         Integer sumPartTwo = data.stream()
-                .reduce(initial, DayThree::prepareContentPartTwo, (list1, list2) -> new ArrayList<>()).stream()
-                .map(DayThree::findbadge)
-                .map(DayThree::convertCharToIntChar).reduce(0, Integer::sum);
+                .reduce(initial, Year2022Day03::prepareContentPartTwo, (list1, list2) -> new ArrayList<>()).stream()
+                .map(Year2022Day03::findbadge)
+                .map(Year2022Day03::convertCharToIntChar).reduce(0, Integer::sum);
 
         logger.info(sumPartOne);
         logger.info(sumPartTwo);

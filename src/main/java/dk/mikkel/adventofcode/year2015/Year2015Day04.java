@@ -3,7 +3,7 @@ package dk.mikkel.adventofcode.year2015;
 import dk.mikkel.adventofcode.util.Base;
 import dk.mikkel.adventofcode.util.Encrypt;
 
-public class Year2015Day4 extends Base<Integer, Integer> {
+public class Year2015Day04 extends Base<Integer, Integer> {
 
     @Override
     public Integer solvePart1(String input) {

@@ -2,9 +2,9 @@ package dk.mikkel.adventofcode.year2020;
 
 import dk.mikkel.adventofcode.util.FileReader;
 
-public class Year2020Day1 {
+public class Year2020Day01 {
     public static void main(String[] args) {
-        new Year2020Day1().runner();
+        new Year2020Day01().runner();
     }
 
     public void runner() {

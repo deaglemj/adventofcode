@@ -5,7 +5,7 @@ import java.util.Set;
 
 import dk.mikkel.adventofcode.util.Base;
 
-public class Year2015Day3 extends Base<Integer, Integer> {
+public class Year2015Day03 extends Base<Integer, Integer> {
 
     @Override
     public Integer solvePart1(String input) {

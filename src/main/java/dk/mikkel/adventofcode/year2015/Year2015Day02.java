@@ -2,7 +2,7 @@ package dk.mikkel.adventofcode.year2015;
 
 import dk.mikkel.adventofcode.util.Base;
 
-public class Year2015Day2 extends Base<Integer, Integer> {
+public class Year2015Day02 extends Base<Integer, Integer> {
 
     @Override
     public Integer solvePart1(String input) {

@@ -10,9 +10,9 @@ import java.util.function.Function;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DayTwo {
+public class Year2022Day02 {
 
-    private static Logger logger = LogManager.getLogger(DayTwo.class);
+    private static Logger logger = LogManager.getLogger(Year2022Day02.class);
 
     /**
      * @param args
@@ -30,7 +30,7 @@ public class DayTwo {
     }
 
     private static Integer calculate(List<String> data, Function<Integer[], Integer> calcFuntion) {
-        return data.stream().map(DayTwo::makeRound).map(calcFuntion).reduce(0, Integer::sum);
+        return data.stream().map(Year2022Day02::makeRound).map(calcFuntion).reduce(0, Integer::sum);
     }
 
     private static Integer[] makeRound(String s) {
