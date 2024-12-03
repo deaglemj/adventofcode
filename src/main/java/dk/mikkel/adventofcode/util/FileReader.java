@@ -36,7 +36,19 @@ public class FileReader {
         return resultStringBuilder.toString().trim();
     }
 
+    public static List<String> readFileToList(int year, int day){
+        return readFileToList(year, day, false);
+    }
+
+    public static List<String> readFileToList(int year, int day, boolean sample){
+        StringBuilder fileurl = new StringBuilder();
+        fileurl.append("year").append(year).append("/day_").append(String.format("%02d", day)).append(sample ? "_sample" : "").append(".input");
+
+        return readFileToList(fileurl.toString());
+    }
+
     public static List<String> readFileToList(String filename) {
+        logger.info("Reading file: {}", filename);
         try {
             File file = Paths.get(ClassLoader.getSystemResource(filename).toURI()).toFile();
             return Files.readAllLines(file.toPath());

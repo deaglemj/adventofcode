@@ -15,8 +15,7 @@ public class Year2020Day01 {
 
     public void runner() {
 
-        Integer[] input = FileReader.readFileToList("year2020/day_01.input").stream().map(Integer::parseInt)
-                .toArray(Integer[]::new);
+        Integer[] input = FileReader.readFileToList(2020, 1).stream().map(Integer::parseInt).toArray(Integer[]::new);
 
         boolean puzzleOneNFound = false;
         boolean puzzleTwoFound = false;
