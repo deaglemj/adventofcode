@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import dk.mikkel.adventofcode.util.FileReader;
 
 public class Year2024Day01 {
+
+    private static Logger logger = LogManager.getLogger(Year2024Day01.class);
 
     public static void main(String[] args) {
         new Year2024Day01().runner();
@@ -18,8 +23,8 @@ public class Year2024Day01 {
     }
 
     private void puzzleOne() {
-        System.out.println("Puzzle 1");
-        List<String> lines = FileReader.readFileToList("year2024/day_1.txt");
+        logger.info("Puzzle 1");
+        List<String> lines = FileReader.readFileToList("year2024/day_1.input");
 
         List<Integer> leftSide = new ArrayList<>();
         List<Integer> rightSide = new ArrayList<>();
@@ -39,13 +44,13 @@ public class Year2024Day01 {
 
         }
 
-        System.out.println(distance);
+        logger.info(distance);
     }
 
     private void puzzleTwo() {
-        System.out.println("Puzzle 2");
+        logger.info("Puzzle 2");
 
-        List<String> lines = FileReader.readFileToList("year2024/day_1.txt");
+        List<String> lines = FileReader.readFileToList("year2024/day_1.input");
 
         List<Integer> leftSide = new ArrayList<>();
         List<Integer> rightSide = new ArrayList<>();
@@ -68,7 +73,7 @@ public class Year2024Day01 {
 
         }
 
-        System.out.println(distance);
+        logger.info(distance);
     }
 
 }
