@@ -1,8 +1,8 @@
 package dk.mikkel.adventofcode.util;
 
 public class Pair<T, U> {
-    public T a;
-    public U b;
+    public final T a;
+    public final U b;
 
     public Pair(T a, U b) {
         this.a = a;
