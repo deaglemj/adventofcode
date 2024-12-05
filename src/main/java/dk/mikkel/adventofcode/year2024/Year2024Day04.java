@@ -9,17 +9,17 @@ import dk.mikkel.adventofcode.util.FileReader;
 
 public class Year2024Day04 {
 
-    private static Logger logger = LogManager.getLogger(Year2024Day04.class);
+    private static Logger logger = LogManager.getLogger(Year2024Day05.class);
 
     public static void main(String[] args) {
-        new Year2024Day04().runner();
+        new Year2024Day05().runner();
     }
 
     public void runner() {
 
         String[] input = FileReader.readFileToArray(2024, 4);
         puzzleOne(input);
-        // puzzleTwo(instructions);
+        puzzleTwo(input);
     }
 
     public void puzzleOne(String[] input) {
@@ -118,8 +118,55 @@ public class Year2024Day04 {
 
             }
 
-            System.out.println(count);
+            
 
+        }
+
+
+        for (int i = 0; i < map.length; i++) {
+            char[] row = map[i];
+            for (int j = 0; j < row.length; j++) {
+                char c = row[j] == 0 ? '.' : row[j];
+
+                System.out.print(c);
+
+            }
+            System.out.println();
+        }
+
+        System.out.println(count);
+
+    }
+
+    public void puzzleTwo(String[] input) {
+        logger.info("Puzzle 2");
+
+        char[][] map = new char[input.length][input[0].length()];
+
+        int count = 0;
+
+        for (int i = 0; i < input.length; i++) {
+            char[] row = input[i].toCharArray();
+            for (int j = 0; j < row.length; j++) {
+                // System.out.print(row[j]);
+                // MAS
+                if (row[j] == 'A' && i > 0 && j > 0 && j < row.length - 1 && i < input.length - 1) {
+                    System.out.println("Found A at " + i + ", " + j);
+                    char m = 'M';
+                    char s = 'S';
+                    boolean c1 = checkPartOne(input, map, i, j, m, s);
+                    boolean c2 = checkPartOne(input, map, i, j, s, m);
+                    
+                    boolean c3 = checkPartTwo(input, map, i, j, m, s);
+                    boolean c4 = checkPartTwo(input, map, i, j, s, m);
+
+                    if (c1 && c3 || c1 && c4 || c2 && c3 || c2 && c4){
+                        count++;
+                    }
+
+
+                }
+            }
         }
 
         for (int i = 0; i < map.length; i++) {
@@ -133,11 +180,29 @@ public class Year2024Day04 {
             System.out.println();
         }
 
+        System.out.println(count);
     }
 
-    public void puzzleTwo(List<String> instructions) {
-        logger.info("Puzzle 2");
+    private boolean checkPartOne(String[] input, char[][] map, int i, int j, char m, char s) {
+        if (input[i - 1].charAt(j + 1) == m 
+         && input[i + 1].charAt(j - 1) == s) {
+            map[i][j] = 'A';
+            map[i - 1][j + 1] = m;
+            map[i + 1][j - 1] = s;
+            return true;
+        }
+        return false;
+    }
 
+    private boolean checkPartTwo(String[] input, char[][] map, int i, int j, char m, char s) {
+        if (input[i - 1].charAt(j - 1) == m 
+         && input[i + 1].charAt(j + 1) == s) {
+            map[i][j] = 'A';
+            map[i - 1][j - 1] = m;
+            map[i + 1][j + 1] = s;
+            return true;
+        }
+        return false;
     }
 
 }
