@@ -17,7 +17,7 @@ public class Year2024Day04 {
 
     public void runner() {
 
-        String[] input = FileReader.readFileToArray(2024, 4, true);
+        String[] input = FileReader.readFileToArray(2024, 4);
         puzzleOne(input);
         // puzzleTwo(instructions);
     }
@@ -27,72 +27,108 @@ public class Year2024Day04 {
 
         char[][] map = new char[input.length][input[0].length()];
 
+        int count = 0;
+
         for (int i = 0; i < input.length; i++) {
             char[] row = input[i].toCharArray();
             for (int j = 0; j < row.length; j++) {
                 // System.out.print(row[j]);
 
                 if (row[j] == 'X') {
-                    if (i > 3 && input[i - 1].charAt(j) == 'M') {
-                        if (i > 2 && input[i - 2].charAt(j) == 'A') {
-                            if (i > 1 && input[i - 3].charAt(j) == 'S') {
-                                map[i][j] = 'X';
-                                map[i - 1][j] = 'M';
-                                map[i - 2][j] = 'A';
-                                map[i - 3][j] = 'S';
-                            }
-                        }
-                    }
-                    
-                    if (i < input.length - 3 && input[i + 1].charAt(j) == 'M') {
-                        if (i < input.length - 2 && input[i + 2].charAt(j) == 'A') {
-                            if (i < input.length - 1 && input[i + 3].charAt(j) == 'S') {
-                                map[i][j] = 'X';
-                                map[i + 1][j] = 'M';
-                                map[i + 2][j] = 'A';
-                                map[i + 3][j] = 'S';
-                            }
-                        }
+                    if (i > 2 && input[i - 1].charAt(j) == 'M'
+                            && input[i - 2].charAt(j) == 'A'
+                            && input[i - 3].charAt(j) == 'S') {
+                        map[i][j] = 'X';
+                        map[i - 1][j] = 'M';
+                        map[i - 2][j] = 'A';
+                        map[i - 3][j] = 'S';
+                        count++;
                     }
 
-                    if (j > 3 && input[i].charAt(j - 1) == 'M') {
-                        if (j > 2 && input[i].charAt(j - 2) == 'A') {
-                            if (j > 1 && input[i].charAt(j - 3) == 'S') {
-                                map[i][j] = 'X';
-                                map[i][j - 1] = 'M';
-                                map[i][j - 2] = 'A';
-                                map[i][j - 3] = 'S';
-                            }
-                        }
+                    if (i < input.length - 3 && input[i + 1].charAt(j) == 'M' && input[i + 2].charAt(j) == 'A'
+                            && input[i + 3].charAt(j) == 'S') {
+                        map[i][j] = 'X';
+                        map[i + 1][j] = 'M';
+                        map[i + 2][j] = 'A';
+                        map[i + 3][j] = 'S';
+                        count++;
                     }
 
-                    if (j < row.length - 3 && input[i].charAt(j + 1) == 'M') {
-                        if (j < row.length - 2 && input[i].charAt(j + 2) == 'A') {
-                            if (j < row.length - 1 && input[i].charAt(j + 3) == 'S') {
-                                map[i][j] = 'X';
-                                map[i][j + 1] = 'M';
-                                map[i][j + 2] = 'A';
-                                map[i][j + 3] = 'S';
-                            }
-                        }
+                    if (j > 2 && input[i].charAt(j - 1) == 'M' && input[i].charAt(j - 2) == 'A'
+                            && input[i].charAt(j - 3) == 'S') {
+                        map[i][j] = 'X';
+                        map[i][j - 1] = 'M';
+                        map[i][j - 2] = 'A';
+                        map[i][j - 3] = 'S';
+                        count++;
                     }
+
+                    if (j < row.length - 3 && input[i].charAt(j + 1) == 'M' && input[i].charAt(j + 2) == 'A'
+                            && input[i].charAt(j + 3) == 'S') {
+                        map[i][j] = 'X';
+                        map[i][j + 1] = 'M';
+                        map[i][j + 2] = 'A';
+                        map[i][j + 3] = 'S';
+                        count++;
+                    }
+
+                    // Diagonals
+
+                    if (j < row.length - 3 && i < input.length - 3 && input[i+1].charAt(j + 1) == 'M' && input[i+2].charAt(j + 2) == 'A'
+                            && input[i+3].charAt(j + 3) == 'S') {
+                        map[i][j] = 'X';
+                        map[i + 1][j + 1] = 'M';
+                        map[i + 2][j + 2] = 'A';
+                        map[i + 3][j + 3] = 'S';
+                        count++;
+                    }
+
+                    if (j > 2 && i > 2 
+                            && input[i-1].charAt(j - 1) == 'M' 
+                            && input[i-2].charAt(j - 2) == 'A'
+                            && input[i-3].charAt(j - 3) == 'S') {
+                        map[i][j] = 'X';
+                        map[i - 1][j - 1] = 'M';
+                        map[i - 2][j - 2] = 'A';
+                        map[i - 3][j - 3] = 'S';
+                        count++;
+                    }
+
+                    if (j < row.length - 3 && i > 2 && input[i-1].charAt(j + 1) == 'M' && input[i-2].charAt(j + 2) == 'A'
+                            && input[i-3].charAt(j + 3) == 'S') {
+                        map[i][j] = 'X';
+                        map[i - 1][j + 1] = 'M';
+                        map[i - 2][j + 2] = 'A';
+                        map[i - 3][j + 3] = 'S';
+                        count++;
+                    }
+
+                    if (j > 2 && i < input.length - 3 && input[i+1].charAt(j - 1) == 'M' && input[i+2].charAt(j - 2) == 'A'
+                            && input[i+3].charAt(j - 3) == 'S') {
+                        map[i][j] = 'X';
+                        map[i + 1][j - 1] = 'M';
+                        map[i + 2][j - 2] = 'A';
+                        map[i + 3][j - 3] = 'S';
+                        count++;
+                    }
+
                 } else {
-                    map[i][j] = '.';
+                    // map[i][j] = '.';
                 }
 
             }
 
-            System.out.println();
+            System.out.println(count);
 
         }
-
-        
 
         for (int i = 0; i < map.length; i++) {
             char[] row = map[i];
             for (int j = 0; j < row.length; j++) {
-                System.out.print(row[j]);
-                System.out.print("-");
+                char c = row[j] == 0 ? '.' : row[j];
+
+                System.out.print(c);
+
             }
             System.out.println();
         }
