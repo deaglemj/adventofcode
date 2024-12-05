@@ -36,13 +36,22 @@ public class FileReader {
         return resultStringBuilder.toString().trim();
     }
 
-    public static List<String> readFileToList(int year, int day){
+    public static String[] readFileToArray(int year, int day) {
+        return readFileToArray(year, day, false);
+    }
+
+    public static String[] readFileToArray(int year, int day, boolean sample) {
+        return readFileToList(year, day, sample).toArray(new String[0]);
+    }
+
+    public static List<String> readFileToList(int year, int day) {
         return readFileToList(year, day, false);
     }
 
-    public static List<String> readFileToList(int year, int day, boolean sample){
+    public static List<String> readFileToList(int year, int day, boolean sample) {
         StringBuilder fileurl = new StringBuilder();
-        fileurl.append("year").append(year).append("/day_").append(String.format("%02d", day)).append(sample ? "_sample" : "").append(".input");
+        fileurl.append("year").append(year).append("/day_").append(String.format("%02d", day))
+                .append(sample ? "_sample" : "").append(".input");
 
         return readFileToList(fileurl.toString());
     }
